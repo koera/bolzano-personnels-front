@@ -1,0 +1,80 @@
+<app-sidebar-top></app-sidebar-top>
+<div id="wrapper">
+
+  <!-- Sidebar -->
+  <ul class="sidebar navbar-nav">
+    <li class="nav-item active">
+      <a class="nav-link" routerLink="/home">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Dashboard</span>
+      </a>
+    </li>
+
+    <li class="nav-item active">
+      <a class="nav-link" routerLink="/personnels">
+        <i class="fas fa-fw fa-list"></i>
+        <span>List personnels</span>
+      </a>
+    </li>
+
+    <li class="nav-item active">
+      <a class="nav-link" routerLink="/personnels/add">
+        <i class="fas fa-fw fa-plus-square"></i>
+        <span>Form personnels</span>
+      </a>
+    </li>
+
+  </ul>
+  <div id="content-wrapper">
+
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="#">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">Overview</li>
+      </ol>
+
+      <!-- Icon Cards-->
+      <div class="row">
+        <div class="col-lg-4">
+            <div id='external-events'>
+                <p>
+                  <strong>Draggable Events</strong>
+                </p>
+                <div class='fc-event' mwlDraggable >My Event 1</div>
+                <div class='fc-event' mwlDraggable >My Event 2</div>
+                <div class='fc-event' mwlDraggable >My Event 3</div>
+                <div class='fc-event' mwlDraggable >My Event 4</div>
+                <div class='fc-event' mwlDraggable >My Event 5</div>
+                <p>
+                  <input type='checkbox' id='drop-remove' />
+                  <label for='drop-remove'>remove after drop</label>
+                </p>
+              </div>
+        </div>
+        <div class="col-lg-8">
+            <div *ngIf="calendarOptions">
+                <!-- (eventClick)="eventClick($event.detail)" (eventDrop)="updateEvent($event.detail)"
+                (eventResize)="updateEvent($event.detail)" (clickButton)="clickButton($event.detail)" -->
+                <ng-fullcalendar mwlDroppable #ucCalendar [options]="calendarOptions"></ng-fullcalendar>
+            </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.container-fluid -->
+
+    <!-- Sticky Footer -->
+    <footer class="sticky-footer">
+      <div class="container my-auto">
+        <div class="copyright text-center my-auto">
+          <span>Copyright © Your Website 2018</span>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+  <!-- /.content-wrapper -->
+</div>
+<app-sidebar-bottom></app-sidebar-bottom>

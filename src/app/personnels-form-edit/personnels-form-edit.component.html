@@ -1,0 +1,228 @@
+<app-sidebar-top></app-sidebar-top>
+<div id="wrapper">
+
+  <!-- Sidebar -->
+  <ul class="sidebar navbar-nav">
+    <li class="nav-item active">
+      <a class="nav-link" routerLink="/home">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Dashboard</span>
+      </a>
+    </li>
+
+    <li class="nav-item active">
+      <a class="nav-link" routerLink="/personnels">
+        <i class="fas fa-fw fa-list"></i>
+        <span>List personnels</span>
+      </a>
+    </li>
+
+    <li class="nav-item active">
+      <a class="nav-link" routerLink="/personnels/add">
+        <i class="fas fa-fw fa-plus-square"></i>
+        <span>Form personnels</span>
+      </a>
+    </li>
+
+  </ul>
+  <div id="content-wrapper">
+
+    <div class="container-fluid">
+
+
+      <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="success">
+        <strong>Finished!</strong> Update success...
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="error">
+        <strong>Oups!</strong> Une erreur s'est produit ! Veuillez ressayer ou contacter l'administrateur
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+
+      <div class="card card-register mx-auto mt-5" *ngIf="personnels">
+        <div class="card-header">Modifier un personnels</div>
+        <div class="card-body">
+          <form #f="ngForm" (ngSubmit)="editPersonnel(f.value)">
+            <div class="form-group">
+              <div class="form-row">
+                <div class="col-md-6">
+                  <div class="form-label-group">
+                    <input type="text" id="nom" name="nom" [(ngModel)]="personnels.nom" ngModel class="form-control"
+                           placeholder="Nom"
+                           required="required" autofocus="autofocus">
+                    <label for="nom">Nom</label>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-label-group">
+                    <input type="text" id="prenom" name="prenom" [(ngModel)]="personnels.prenom" ngModel
+                           class="form-control" placeholder="Prenom"
+                           required="required">
+                    <label for="prenom">Prenom</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="form-row">
+                <div class="col-md-6">
+                  <div class="form-label-group">
+                    <mat-form-field>
+                      <input name="dateNaissance" ngModel [(ngModel)]="personnels.dateNaissance" matInput
+                             [matDatepicker]="dateNaissance"
+                             placeholder="Date de naissance">
+                      <mat-datepicker-toggle matSuffix [for]="dateNaissance"></mat-datepicker-toggle>
+                      <mat-datepicker #dateNaissance></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-label-group">
+                    <mat-form-field>
+                      <input name="dateDebauche" ngModel [(ngModel)]="personnels.dateDebauche" matInput
+                             [matDatepicker]="dateDebauche"
+                             placeholder="Date debauche">
+                      <mat-datepicker-toggle matSuffix [for]="dateDebauche"></mat-datepicker-toggle>
+                      <mat-datepicker #dateDebauche></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="form-row">
+                <div class="col-md-6">
+                  <div class="form-label-group">
+                    <input type="text" id="cin" name="cin" ngModel [(ngModel)]="personnels.cin" class="form-control"
+                           placeholder="CIN"
+                           required="required">
+                    <label for="CIN">CIN</label>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-label-group">
+                    <input type="text" id="passeport" name="numeroPasseport" [(ngModel)]="personnels.numeroPasseport"
+                           ngModel class="form-control"
+                           placeholder="Numero Passeport">
+                    <label for="CIN">Passeport</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="form-row">
+                <div class="col-md-6">
+                  <div class="form-label-group">
+                    <input type="text" id="matricule" name="matricule" [(ngModel)]="personnels.matricule" ngModel
+                           class="form-control"
+                           placeholder="Matricule"
+                           required="required">
+                    <label for="matricule">Matricule</label>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-label-group">
+                    <mat-form-field>
+                      <input name="dateEmbauche" ngModel [(ngModel)]="personnels.dateEmbauche" matInput
+                             [matDatepicker]="dateEmbauche"
+                             placeholder="Date embauche">
+                      <mat-datepicker-toggle matSuffix [for]="dateEmbauche"></mat-datepicker-toggle>
+                      <mat-datepicker #dateEmbauche></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="form-row">
+                <div class="col-md-6">
+                  <div class="form-label-group">
+                    <input type="text" id="cnaps" name="cnaps" ngModel [(ngModel)]="personnels.cnaps"
+                           class="form-control" placeholder="Numero cnaps"
+                           required="required">
+                    <label for="cnaps">Numero CNaPS</label>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-label-group">
+                    <input type="text" id="ostie" name="ostie" ngModel [(ngModel)]="personnels.ostie"
+                           class="form-control" placeholder="Numero ostie"
+                           required="required">
+                    <label for="cnaps">Numero OSTIE</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="form-row">
+                <div class="col-md-12">
+                  <div class="form-label-group">
+                    <input type="text" id="poste" name="posteActuel" [(ngModel)]="personnels.posteActuel" ngModel
+                           class="form-control"
+                           placeholder="Poste actuel"
+                           required="required">
+                    <label for="poste">Poste Actuel</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="form-row">
+                <div class="col-md-4">
+                  <div class="form-label-group">
+                    <input type="text" id="adresse1" name="adresse1" [(ngModel)]="personnels.adresse1" ngModel
+                           class="form-control"
+                           placeholder="Adresse 1"
+                           required="required">
+                    <label for="adresse1">Adresse 1</label>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-label-group">
+                    <input type="text" id="adresse2" name="adresse2" [(ngModel)]="personnels.adresse2" ngModel
+                           class="form-control"
+                           placeholder="Adresse 2"
+                           required="required">
+                    <label for="adresse1">Adresse 2</label>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-label-group">
+                    <input type="text" id="ville" name="ville" [(ngModel)]="personnels.ville" ngModel
+                           class="form-control" placeholder="Ville"
+                           required="required">
+                    <label for="ville">Ville</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <button class="btn btn-primary btn-block" type="submit">Enregistrer</button>
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+    <!-- /.container-fluid -->
+
+    <!-- Sticky Footer -->
+    <footer class="sticky-footer">
+      <div class="container my-auto">
+        <div class="copyright text-center my-auto">
+          <span>Copyright © Personnels 2018</span>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+  <!-- /.content-wrapper -->
+</div>
+<app-sidebar-bottom></app-sidebar-bottom>
+
