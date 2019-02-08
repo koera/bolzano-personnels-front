@@ -27,7 +27,9 @@
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.js",
-              "node_modules/jquery-ui-dist/external/jquery/jquery.js"
+              "node_modules/jquery-ui-dist/jquery-ui.js",
+              "node_modules/moment/min/moment.min.js",
+              "node_modules/fullcalendar/dist/fullcalendar.js"
             ]
           },
           "configurations": {
@@ -86,7 +88,9 @@
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.js",
-              "node_modules/jquery-ui-dist/external/jquery/jquery.js"
+              "node_modules/jquery-ui-dist/jquery-ui.js",
+              "node_modules/moment/min/moment.min.js",
+              "node_modules/fullcalendar/dist/fullcalendar.js"
             ],
             "assets": [
               "src/favicon.ico",

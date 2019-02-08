@@ -25,10 +25,15 @@ import {
 } from 'ngx-ui-loader';
 
 import { PresenceComponent } from './presence/presence.component';
+import * as $ from 'jquery';
 
 import {FullCalendarModule} from 'ng-fullcalendar';
 
 import {DragAndDropModule} from 'angular-draggable-droppable';
+import { PresenceCalendarComponent } from './presence-calendar/presence-calendar.component';
+import { EtatsComponent } from './etats/etats.component';
+import { ColorPickerModule } from 'ngx-color-picker';
+
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   bgsColor: 'red',
@@ -51,6 +56,8 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     SidebarBottomComponent,
     PersonnelsDeletedComponent,
     PresenceComponent,
+    PresenceCalendarComponent,
+    EtatsComponent
   ],
   imports: [
     BrowserModule,
@@ -63,6 +70,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     NgxUiLoaderHttpModule.forRoot({showForeground: true}),
     FullCalendarModule,
     DragAndDropModule,
+    ColorPickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

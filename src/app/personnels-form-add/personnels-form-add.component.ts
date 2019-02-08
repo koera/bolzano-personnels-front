@@ -92,10 +92,10 @@ export class PersonnelsFormAddComponent implements OnInit {
     if (files && files.length) {
       console.log('Filename: ' + files[0].name);
       console.log('Type: ' + files[0].type);
-      if (files[0].type !== 'application/vnd.ms-excel') {
-        alert('Veuillez telecharger un fichier excel valide');
-        return false;
-      }
+      // if (files[0].type !== 'application/vnd.ms-excel') {
+      //   alert('Veuillez telecharger un fichier excel valide');
+      //   return false;
+      // }
       console.log('Size: ' + files[0].size + ' bytes');
       const fileToRead = files[0];
       const fileReader = new FileReader();

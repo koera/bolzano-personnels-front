@@ -39,4 +39,8 @@ export class PersonnelsServiceService {
     return this.http.patch(this.base_url + '/personnels/' + id, data, {headers: this.headers, observe: 'response'});
   }
 
+  getListNotPageable(){
+    return this.http.get(this.base_url + '/personnels/not-pageable', {headers: this.headers});
+  }
+
 }

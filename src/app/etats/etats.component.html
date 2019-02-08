@@ -1,0 +1,65 @@
+<app-sidebar-top></app-sidebar-top>
+<div id="wrapper">
+
+  <!-- Sidebar -->
+  <ul class="sidebar navbar-nav">
+    <li class="nav-item active">
+      <a class="nav-link" routerLink="/home">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Dashboard</span>
+      </a>
+    </li>
+
+    <li class="nav-item active">
+      <a class="nav-link" routerLink="/personnels">
+        <i class="fas fa-fw fa-list"></i>
+        <span>List personnels</span>
+      </a>
+    </li>
+
+    <li class="nav-item active">
+      <a class="nav-link" routerLink="/personnels/add">
+        <i class="fas fa-fw fa-plus-square"></i>
+        <span>Form personnels</span>
+      </a>
+    </li>
+
+  </ul>
+  <div id="content-wrapper">
+
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="#">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item">Presence</li>
+        <li class="breadcrumb-item active">Etats</li>
+      </ol>
+      <form #f="ngForm" (ngSubmit)="saveEtat(f.value)">
+        <div class="form-group">
+          <label for="nom">Nom:</label>
+          <input type="text" class="form-control" ngModel id="nom" name="nom">
+        </div>
+        <div class="form-group">
+          <label for="codeCouleur">Code couleur:</label>
+          <input [colorPicker]="color" name="codeCouleur" ngModel class="form-control col-6" (colorPickerChange)="color=$event" [style.background]="color" [value]="color"/>
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+    </div>
+    <!-- /.container-fluid -->
+
+    <!-- Sticky Footer -->
+    <footer class="sticky-footer">
+      <div class="container my-auto">
+        <div class="copyright text-center my-auto">
+          <span>Copyright © Your Website 2018</span>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+  <!-- /.content-wrapper -->
+</div>
+<app-sidebar-bottom></app-sidebar-bottom>

@@ -36,38 +36,23 @@
         <li class="breadcrumb-item active">Overview</li>
       </ol>
 
+      <!-- Icon Cards-->
       <div class="row">
-        <div class="col-xl-6 col-sm-6 mb-3">
-          <div class="card text-white bg-primary o-hidden h-100">
-            <div class="card-body">
-              <div class="card-body-icon">
-                <i class="fas fa-fw fa-calendar"></i>
-              </div>
-              <div class="mr-5">Calendrier</div>
-            </div>
-            <a class="card-footer text-white clearfix small z-1" style="cursor: pointer;" (click)="navigateToCalendar()">
-              <span class="float-left">Consulter</span>
-              <span class="float-right">
-                    <i class="fas fa-angle-right"></i>
-                  </span>
-            </a>
+          <div class="col-lg-3" *ngIf="personnels">
+              <ul class="list-group">
+                  <li class="list-group-item" [ngClass]="{'active': p.id==selectedPersonnelId}" *ngFor="let p of personnels.content">
+                      <a [routerLink]="['/presence/calendar/',p.id]">{{p.nom}}</a>
+                  </li>
+                </ul>
           </div>
+        <div class="col-lg-3">
+            <div id='external-events'>
+                <div class='fc-event' *ngFor="let e of etats._embedded.etats" [style.background]="e.codeCouleur" 
+                    [attr.data-person]="selectedPersonnelId" [attr.data-code]="e.id" [attr.data-bg]="e.codeCouleur">{{e.nom}}</div>
+              </div>
         </div>
-        <div class="col-xl-6 col-sm-6 mb-3">
-          <div class="card text-white bg-warning o-hidden h-100">
-            <div class="card-body">
-              <div class="card-body-icon">
-                <i class="fas fa-fw fa-angular"></i>
-              </div>
-              <div class="mr-5">Etats</div>
-            </div>
-            <a class="card-footer text-white clearfix small z-1" routerLink="/presence/etats">
-              <span class="float-left">Gerer</span>
-              <span class="float-right">
-                    <i class="fas fa-angle-right"></i>
-                  </span>
-            </a>
-          </div>
+        <div class="col-lg-6">
+            <div id="calendar"></div>
         </div>
       </div>
     </div>
