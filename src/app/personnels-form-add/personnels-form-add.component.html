@@ -24,10 +24,27 @@
       </a>
     </li>
 
+    
+    <li class="nav-item active">
+      <a class="nav-link" routerLink="/presence">
+        <i class="fas fa-fw fa-calendar-check"></i>
+        <span>Presence</span>
+      </a>
+    </li>
+
   </ul>
   <div id="content-wrapper">
 
     <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="#">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item">Personnels</li>
+        <li class="breadcrumb-item active">Forms</li>
+      </ol>
+
       <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="success">
         <strong>Finish!</strong> Operation success...
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">

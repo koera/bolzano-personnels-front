@@ -24,6 +24,14 @@
       </a>
     </li>
 
+    
+    <li class="nav-item active">
+      <a class="nav-link" routerLink="/presence">
+        <i class="fas fa-fw fa-calendar-check"></i>
+        <span>Presence</span>
+      </a>
+    </li>
+
   </ul>
   <div id="content-wrapper">
 
@@ -40,7 +48,7 @@
       <div class="row">
           <div class="col-lg-3" *ngIf="personnels">
               <ul class="list-group">
-                  <li class="list-group-item" [ngClass]="{'active': p.id==selectedPersonnelId}" *ngFor="let p of personnels.content">
+                  <li class="list-group-item" [ngClass]="{'active': p.id==selectedPersonnelId}" *ngFor="let p of personnels">
                       <a [routerLink]="['/presence/calendar/',p.id]">{{p.nom}}</a>
                   </li>
                 </ul>

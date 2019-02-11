@@ -30,4 +30,9 @@ export class EtatServiceService {
     const headers = new HttpHeaders({'Authorization': this.authService.jwt, 'content-type': 'Application/json'});
     return this.http.post(this.base_url+'/etats',etat,{headers: headers});
   }
+
+  update(etatId,etat){
+    const headers = new HttpHeaders({'Authorization': this.authService.jwt, 'content-type': 'Application/json'});
+    return this.http.patch(this.getUrlOneEtat(etatId),etat,{headers : headers});
+  }
 }

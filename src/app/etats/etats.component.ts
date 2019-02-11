@@ -10,8 +10,12 @@ import { EtatServiceService } from '../etat-service.service';
 })
 export class EtatsComponent implements OnInit {
 
-
-  private color: string = "#127bdc";
+  public color: string = "#127bdc";
+  etats;
+  singleEtats : any= {
+    nom: '',
+    codeCouleur: ''
+  }
 
   constructor(private router: Router, private authService: AuthenticationServiceService,
     private etatService: EtatServiceService) {
@@ -19,15 +23,44 @@ export class EtatsComponent implements OnInit {
 
   ngOnInit() {
     this.authService.loadToken();
+    this.loadEtats();
   }
 
   saveEtat(data){
-    console.log(data);
+    console.log(this.singleEtats);
     data.codeCouleur = this.color;
-    this.etatService.save(data).subscribe(resp=>{
-      console.log(resp);
-    }, error => {
-      console.log(error);
+    if(this.singleEtats.id){
+      this.etatService.update(this.singleEtats.id,data).subscribe(resp=>{
+        this.loadEtats();
+      }, error => {
+        console.log(error);
+      })
+    }else{
+      this.etatService.save(data).subscribe(resp=>{
+        this.loadEtats();
+      }, error => {
+        console.log(error);
+      })
+    }
+    
+  }
+
+  loadEtats(){
+    this.etatService.getAll().subscribe(data=>{
+      this.etats = data;
+      console.log(this.etats)
     })
+  }
+
+  updateEtat(etat){
+    this.singleEtats = etat;
+    this.color = etat.codeCouleur;
+  }
+
+  reset(){
+    this.singleEtats = {
+      nom: '',
+      codeCouleur: ''
+    }
   }
 }

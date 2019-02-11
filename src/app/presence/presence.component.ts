@@ -24,6 +24,7 @@ export class PresenceComponent implements OnInit {
   getAllPersonnel(){
     this.personnelsService.getListNotPageable().subscribe(res =>{
       this.personnels = res;
+    console.log(this.personnels)
     },err => {
       console.log(err);
     })

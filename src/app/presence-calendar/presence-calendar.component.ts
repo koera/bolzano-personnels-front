@@ -77,8 +77,6 @@ export class PresenceCalendarComponent implements OnInit {
         })
       }
     });
-
-    console.log(this.events);
   }
 
   loadEvents(idPersonnel){
@@ -93,7 +91,6 @@ export class PresenceCalendarComponent implements OnInit {
   loadEtats(){
     this.etatService.getAll().subscribe(data=>{
       this.etats = data;
-      console.log(this.etats)
     },error=>{
       console.log(error);
     })
@@ -101,7 +98,7 @@ export class PresenceCalendarComponent implements OnInit {
 
 
   getAllPersonnel(){
-    this.personnelsService.getList(0,10).subscribe(res =>{
+    this.personnelsService.getListNotPageable().subscribe(res =>{
       this.personnels = res;
     },err => {
       console.log(err);

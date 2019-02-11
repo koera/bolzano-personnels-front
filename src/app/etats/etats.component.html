@@ -23,6 +23,13 @@
         <span>Form personnels</span>
       </a>
     </li>
+    
+    <li class="nav-item active">
+      <a class="nav-link" routerLink="/presence">
+        <i class="fas fa-fw fa-calendar-check"></i>
+        <span>Presence</span>
+      </a>
+    </li>
 
   </ul>
   <div id="content-wrapper">
@@ -37,14 +44,41 @@
         <li class="breadcrumb-item active">Etats</li>
       </ol>
       <form #f="ngForm" (ngSubmit)="saveEtat(f.value)">
-        <div class="form-group">
-          <label for="nom">Nom:</label>
-          <input type="text" class="form-control" ngModel id="nom" name="nom">
+        <div class="row">
+          <div class="col-lg-6 col-6 col-xs-12">
+            <div class="form-group">
+              <label for="nom">Nom:</label>
+              <input type="text" class="form-control" ngModel [(ngModel)]="singleEtats.nom" id="nom" name="nom">
+            </div>
+            <div class="form-group">
+              <label for="codeCouleur">Code couleur:</label>
+              <input [colorPicker]="color" name="codeCouleur" [(ngModel)]="singleEtats.codeCouleur" ngModel class="form-control col-6" (colorPickerChange)="color=$event" [style.background]="color" [value]="color"/>
+            </div>
+          </div>
+          <div class="col-lg-6 col-6 col-xs-12">
+            <table class="table table-striped">
+              <thead>
+                <th>Nom</th>
+                <th colspan="2">Code couleur</th>
+              </thead>
+              <tbody *ngIf="etats">
+                <tr *ngFor="let e of etats._embedded.etats">
+                    <td>{{e.nom}}</td>
+                    <td>
+                      <div class="card" [style.background]='e.codeCouleur' 
+                        style="height: 20px;">
+                      </div>
+                    </td>
+                    <td>
+                      <button type="button" class="btn btn-default" (click)="updateEtat(e)">Edit</button>
+                    </td>
+                </tr>
+                
+              </tbody>
+            </table>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="codeCouleur">Code couleur:</label>
-          <input [colorPicker]="color" name="codeCouleur" ngModel class="form-control col-6" (colorPickerChange)="color=$event" [style.background]="color" [value]="color"/>
-        </div>
+        <button type="button" class="btn btn-default" (click)="reset()" >Annuler</button>&nbsp;
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
     </div>
